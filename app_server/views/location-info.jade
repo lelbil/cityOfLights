@@ -1,0 +1,85 @@
+include _includes/mixins
+
+extends layout
+
+block content
+	.row.page-header
+		.col-lg-12
+			h1= location.name
+	.row
+		.col-xs-12.col-md-9
+			.row
+				.col-xs-12.col-sm-6
+					p.rating
+						+ratingStars(location.rating)
+					p=location.address
+					.panel.panel-primary
+						.panel-heading
+							h2.panel-title Opening hours
+						.panel-body
+							p Every day 9AM - 12AM
+					.panel.panel-primary
+						.panel-heading 
+							h2.panel-title Tags
+						.panel-body
+							each tag in location.tags
+								span.label.label-warning=tag
+								| &nbsp;
+					.panel.panel-primary
+						.panel-heading
+							h2.panel-title Description
+						.panel-body
+							p=location.description
+				.col-xs-12.col-sm-6.location-map
+					.panel.panel-primary
+						.panel-heading
+							h2.panel-title Location Map
+						.panel-body
+							img.img-responsive.img-rounded(src='https://dessylovetravelling.files.wordpress.com/2013/05/eiffel-tower-paris-france.png')
+			.row
+				.col-xs-12
+					.panel.panel-success.photos-panel
+						.panel-heading
+							a(href='#')
+								span.glyphicon.glyphicon-chevron-right.pull-right
+							a(href='#')
+								span.glyphicon.glyphicon-chevron-left.pull-right
+							h2.panel-title Photos
+						.panel-body
+							img.img-responsive.img-rounded(src='http://cdn.history.com/sites/2/2015/04/hith-eiffel-tower-iStock_000016468972Large.jpg')
+			.row
+				.col-xs-12
+					.panel.panel-primary.review-panel
+						.panel-heading
+							a.btn.btn-default.pull-right(href='/location/#{location._id}/reviews/new') Add a Review
+							h2.panel-title Visitors' Reviews
+						.panel-body.review-container
+							.row
+								.review
+									.well.well-sm.review-header
+										span.rating
+											span.glyphicon.glyphicon-star
+											span.glyphicon.glyphicon-star
+											span.glyphicon.glyphicon-star
+											span.glyphicon.glyphicon-star
+											span.glyphicon.glyphicon-star
+										span.reviewAuthor   Billel ATTOUCHI
+										small.reviewTimestamp 17 November 2016
+									.col-xs-12
+										p Magical! simply Maginificent
+							each review in location.reviews
+								.row
+									.review
+										.well.well-sm.review-header
+											span.rating
+												+ratingStars(review.rating)
+											span.reviewAuthor     #{review.author}
+											small.reviewTimestamp formatDate(review.createdOn)
+										.col-xs-12
+											p #{review.text}
+		.col-xs-12.col-md-3
+			.panel.panel-info
+						.panel-heading
+							h2.panel-title Description
+						.panel-body
+							p The Eiffel Tower is a wrought iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.

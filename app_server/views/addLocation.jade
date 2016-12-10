@@ -1,0 +1,61 @@
+extends layout
+
+block content
+	h1.page-header=title
+	//-
+		.row
+			ul.errors.col-xs-6
+				if errors
+					each error, i in errors
+						li.alert.alert-danger #{error.msg}
+	if errors
+		.row
+			ul.errors.col-xs-6.alert.alert-danger
+				each error, i in errors
+					li=  error.msg
+	.row
+		//form(method="post").well.col-xs-8
+		form(method="post", enctype="multipart/form-data").well.col-xs-8
+			.form-group
+				label(for="name") Name
+				input(type="text", name="name")#name.form-control
+			.form-group
+				label(for="rating") Rating
+				select.form-control#rating(name="rating")
+					option 1
+					option 2
+					option 3
+					option 4
+					option 5
+			.form-group
+				label(for="address") Address
+				input(type='text', name="address")#address.form-control
+			.form-group
+				label(for="tags") Tags
+				input(type="text", name="tags")#tags.form-control
+				small#tagsHelp.form-text.text-muted enter multiple tags seperated by a comma (,)
+			.form-group
+				label(for="description", name ="description") Description
+				textarea(rows=6)#description.form-control
+			.form-group
+				label(for="latitude") Latitude
+				input(type="number", name="latitude")#latitude.form-control
+			.form-group
+				label(for="longitude") Longitude
+				input(type="number", name="longitude")#longitude.form-control
+			.form-group
+				label(for="photo") Photo
+				input#photo(type="file", name='photo')
+			.form-group
+				label(for="photo") Photo
+				input#photo(type="file", name='photo')
+			.form-group
+				label(for="photo") Photo
+				input#photo(type="file", name='photo')
+			.form-group
+				label(for="photo") Photo
+				input#photo(type="file", name='photo')
+			.form-group
+				label(for="photo") Photo
+				input#photo(type="file", name='photo')
+			button.btn.btn-primary.pull-right(type='submit', name='submit', value='Register') Add Location

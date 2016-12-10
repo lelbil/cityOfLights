@@ -1,0 +1,31 @@
+include _includes/mixins
+
+extends layout
+
+block content
+	#banner.page-header
+		.row
+			.col-lg-6
+				h1= pageHeader.title
+					small &nbsp;#{pageHeader.strapline}
+	.row
+		.col-xs-12.col-sm-8
+			.error= message
+			if !message
+				.row.list-group
+					each location in locations
+						.col-xs-12.list-group-item
+							h4
+								a(href="/location/#{location.obj._id}")= location.obj.name
+								small &nbsp;
+								+ratingStars(location.obj.rating)
+								span.badge.pull-right.badge-default=location.dis
+							p.address=location.obj.address
+							if location.tags
+								p
+									each tag in location.obj.tags
+										span.label.label-warning= tag
+										| &nbsp;
+								
+		.col-xs-12.col-sm-4
+			p.lead Visiting Paris and wondering what else should I see. Wonder no more. get informations about the most interessing places to visit in Paris and have the time of your life in the City Of Lights

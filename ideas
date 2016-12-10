@@ -1,0 +1,17 @@
+ideas:
+	- add a little photo of the location in the home page
+
+less important ideas:
+	- let the user choose between metric and the other system (take one for the yankees)
+	- check if a place is open/closed at the time
+	-add a 'How to get there' panel
+	-Make the add a review page header title says : Review [location name] (you can fetch location name from the db using req.params.locationid)
+	
+problems/errors/bugs to fix: 
+	- can't enter coordinates as floats
+
+have to do's:
+	- convert the distance from radian to a human readable one 
+	- Use uploaded photos from the DB 
+	- get Map using coordinates, better be interactibe map like ARPEJ's
+	-Add opening/closing hours
